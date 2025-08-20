@@ -39,6 +39,7 @@ setInterval(async () => {
 
 
 bot.on('playerJoin', async (user, position) => {
+    console.log(user.username)
   for (m of msgs) {
     bot.message.send(`${getRandomNumber(0,20)}\n${m}`) .catch(e => console.error(e))
     await delay(1000)

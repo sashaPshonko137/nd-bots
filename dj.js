@@ -410,12 +410,10 @@ bot.on('ready', async () => {
       userDance.add(player[0].id)
     }
   })
-  console.log(players)
 });
 
 bot.on("chatCreate", async (user, message) => {
   const msg = message.toLowerCase();
-  console.log(`${user.username}: ${msg}`)
     if (msg === '0') {
     userEmote.delete(user.id)
     return
@@ -479,7 +477,6 @@ bot.on("chatCreate", async (user, message) => {
     return
   }
   if (user.username != 'sasha_pshonko' && user.username != 'ShadedGluteal') return
-  console.log(`[CHAT]: ${user.username}:${user.id} - ${message}`);
   if (msg === 'баланс' || msg === 'бал') {
     const balance = await bot.wallet.gold.get().catch(console.error)
     bot.message.send(`баланс - ${balance}`).catch(console.error);
@@ -494,7 +491,6 @@ bot.on("chatCreate", async (user, message) => {
   if (price !== 0) {
     try {
         const balance = await bot.wallet.gold.get().catch(console.error);
-        console.log('Current balance:', balance);
         
         if (!balance) {
             console.error('Failed to get balance');
@@ -544,7 +540,6 @@ for (const id of playerIDs) {
   if (id === '6370bcc817c7908be2648aef') continue
     try {
         await bot.player.tip(id, barType);
-        console.log(`Sent tip to ${id}`);
         successCount++;
     } catch (error) {
         console.error(`Failed to tip player ${id}:`, error);

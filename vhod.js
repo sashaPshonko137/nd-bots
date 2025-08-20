@@ -33,11 +33,15 @@ const msgs = [
     All content of the room is protected by copyright.`
 ]
 
+setInterval(async () => {
+    await bot.player.emote('68a633049cb92a01a6c5f75e', "dance-hipshake").catch(console.error)
+}, 12000)
+
 
 bot.on('playerJoin', async (user, position) => {
   for (m of msgs) {
-    bot.message.send(`${getRandomNumber(0,20)}\nm`) .catch(e => console.error(e))
-    await delay(500)
+    bot.message.send(`${getRandomNumber(0,20)}\n${m}`) .catch(e => console.error(e))
+    await delay(1000)
   }
 });
 

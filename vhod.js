@@ -1,4 +1,4 @@
-const { Highrise, Events, Facing, Emotes, GoldBars } = require("highrise.sdk.dev");
+const { Highrise, Events, Facing, Emotes, GoldBars, Reactions } = require("highrise.sdk.dev");
 // const { GoldBars } = require("highrise.sdk");
 const fs = require('fs');
 const fsPromises = require('fs').promises;

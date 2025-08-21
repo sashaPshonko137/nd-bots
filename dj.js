@@ -345,7 +345,7 @@ setInterval(async () => {
   await bot.player.emote('68a5dbb26478cc4c38743275', emote.id)
   userDance.forEach(async id => {
     await bot.player.emote(id, emote.id)
-    .catch(e => userEmote.delete(id))
+    .catch(e => userDance.delete(id))
   })
 })
 

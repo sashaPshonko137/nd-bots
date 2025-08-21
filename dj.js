@@ -402,8 +402,8 @@ bot.on("playerTip", async (sender, receiver, tip) => {
 })
 
 bot.on('ready', async () => {
-  bot.move.walk(14, 0, 24.5, Facing.FrontLeft)
-  const players = await bot.room.players.get()
+  bot.move.walk(14, 0, 24.5, Facing.FrontLeft).catch(console.error);
+  const players = await bot.room.players.get().catch(console.error);
   userCord = new Map(players.map(entry => [entry[0].id, entry[1]]));
   players.forEach((player) => {
     if (isPointInSquare(player[1], square)) {
@@ -539,7 +539,7 @@ let failedCount = 0;
 for (const id of playerIDs) {
   if (id === '6370bcc817c7908be2648aef') continue
     try {
-        await bot.player.tip(id, barType);
+        await bot.player.tip(id, barType).catch(console.error);;
         successCount++;
     } catch (error) {
         console.error(`Failed to tip player ${id}:`, error);
@@ -641,10 +641,10 @@ bot.on("playerMove", async (user, position) => {
     const pos = userCord.get(user.id)
     const distance = getDistance(pos.x, pos.z, position.x, position.z)
     if (Math.abs(pos.y - position.y) > 5) {
-      await tp(bot, user.id, position.x, position.y, position.z)
+      await tp(bot, user.id, position.x, position.y, position.z).catch(console.error);
     }
   } else {
-    await tp(bot, user.id, position.x, position.y, position.z)
+    await tp(bot, user.id, position.x, position.y, position.z).catch(console.error);
   }
   userCord.set(user.id, position)
 

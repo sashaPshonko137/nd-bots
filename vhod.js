@@ -207,6 +207,19 @@ for (const id of playerIDs) {
 
 });
 
+function getRandomDelayInRange(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function getRandomElement(array) {
+  if (!Array.isArray(array) || array.length === 0) {
+    throw new Error("Input must be a non-empty array");
+  }
+  
+  const randomIndex = Math.floor(Math.random() * array.length);
+  return array[randomIndex];
+}
+
 function parseUserAction(inputString) {
     // Удаляем пробелы в начале и конце, затем разбиваем по пробелам
     const trimmedInput = inputString.trim();

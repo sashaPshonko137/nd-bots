@@ -255,7 +255,7 @@ function extractNumberFromString(inputString) {
 
 
 bot.on("playerTip", async (sender, receiver, tip) => {
-    if (tip.amount !== 10 || receiver.id !== '6835fa9c903951782e5c18e4' || !razdacha.isRunning) return
+    if (tip.amount !== 10 || receiver.id !== '68a633049cb92a01a6c5f75e' || !razdacha.isRunning) return
     razdacha.isRunning = false
     await delay(2000)
     await bot.message.send(`\n@${sender.username} got 20g`).catch(console.error);

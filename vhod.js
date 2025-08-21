@@ -1,4 +1,4 @@
-const { Highrise, Events, Facing, Emotes, GoldBars } = require("highrise.sdk.dev");
+const { Highrise, Events, Facing, Emotes, GoldBars, Reactions } = require("highrise.sdk.dev");
 // const { GoldBars } = require("highrise.sdk");
 const fs = require('fs');
 const fsPromises = require('fs').promises;
@@ -19,6 +19,12 @@ const noTipIDs = [
   "67f8078652db7b9f7a0e68fb",
   "67a2b617a337e1b57da53360",
   "68a633049cb92a01a6c5f75e",
+  "68a62c4bb82acfc37f92f3c3",
+  "68a5dbb26478cc4c38743275"
+]
+
+const botIDs = [
+    "68a633049cb92a01a6c5f75e",
   "68a62c4bb82acfc37f92f3c3",
   "68a5dbb26478cc4c38743275"
 ]
@@ -70,7 +76,7 @@ const msg = message.toLowerCase();
         if (razdacha.isRunning) return
         razdacha.isRunning = true
         const players = await bot.room.players.get().catch(console.error);
-        const playerIDs = players.map(item => item[0].id);
+        const playerIDs = players.map(item => item[0].id).filter(id => !botIDs.includes(id))
         const totalPlayers = playerIDs.length;
         for (const id of playerIDs) {
             if (id === '6835fa9c903951782e5c18e4') continue

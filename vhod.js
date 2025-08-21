@@ -77,14 +77,8 @@ const msg = message.toLowerCase();
         razdacha.isRunning = true
         const players = await bot.room.players.get().catch(console.error);
         const playerIDs = players.map(item => item[0].id).filter(id => !botIDs.includes(id))
-        const totalPlayers = playerIDs.length;
         for (const id of playerIDs) {
-            if (id === '6835fa9c903951782e5c18e4') continue
-            try {
-                await bot.player.react(id, Reactions.Clap).catch(e => console.error(e));
-            } catch (error) {
-                console.error(error)
-            }
+            await bot.player.react(id, Reactions.Clap).catch(e => console.error(e));
         }
         // bot.message.send(`\nWhoever drops 10g after the word ✅START✅ will receive 20g`).catch(console.error);
         await bot.message.send(`\nПервый, кто скинет 10г после слова ✅START✅ - получит 20г`).catch(console.error);
@@ -257,6 +251,17 @@ function extractNumberFromString(inputString) {
 // bot.on("playerMove", async (user, position) => {
 //     console.log(position)
 // })
+
+
+
+bot.on("playerTip", async (sender, receiver, tip) => {
+    if (tip.amount !== 10 || receiver.id !== '6835fa9c903951782e5c18e4' || !razdacha.isRunning) return
+    razdacha.isRunning = false
+    await delay(2000)
+    await bot.message.send(`\n@${sender.username} got 20g`).catch(console.error);
+    await bot.player.tip(sender.id, 10)
+    await bot.player.tip(sender.id, 10)
+})
 
 bot.on('ready', async () => {
   bot.move.walk(16.5, 7.25, 11.5, Facing.FrontRight)

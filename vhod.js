@@ -23,6 +23,8 @@ const noTipIDs = [
   "68a5dbb26478cc4c38743275"
 ]
 
+let razdacha = {isRunning: false}
+
 function getRandomNumber(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -94,9 +96,10 @@ const msg = message.toLowerCase();
             }
         }
         await bot.message.send(`\n✅START✅`).catch(console.error);
+        return
     }
 
-          const price = extractNumberFromString(msg)
+    const price = extractNumberFromString(msg)
   if (price !== 0) {
     try {
         const balance = await bot.wallet.gold.get().catch(console.error);

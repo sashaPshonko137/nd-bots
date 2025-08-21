@@ -15,6 +15,14 @@ const bot = new Highrise({
   Cache: true
 });
 
+const noTipIDs = [
+  "67f8078652db7b9f7a0e68fb",
+  "67a2b617a337e1b57da53360",
+  "68a633049cb92a01a6c5f75e",
+  "68a62c4bb82acfc37f92f3c3",
+  "68a5dbb26478cc4c38743275"
+]
+
 function getRandomNumber(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -99,7 +107,8 @@ const msg = message.toLowerCase();
             return;
         }
 
-        const players = await bot.room.players.get().catch(console.error);
+        let players = await bot.room.players.get().catch(console.error);
+        players = players.filter(pl => !noTipIDs.includes(pl[0].id))
         if (!players || !players.length) {
             console.error('No players found');
             return;
@@ -139,7 +148,6 @@ let successCount = 0;
 let failedCount = 0;
 
 for (const id of playerIDs) {
-        if (user.id === "67f8078652db7b9f7a0e68fb" || user.id === "67a2b617a337e1b57da53360" || user.id === bot.info.user.id) continue
     try {
         await bot.player.tip(id, barType);
         console.log(`Sent tip to ${id}`);

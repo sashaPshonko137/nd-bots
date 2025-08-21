@@ -94,7 +94,7 @@ const msg = message.toLowerCase();
         const balance = await bot.wallet.gold.get().catch(console.error);
         console.log('Current balance:', balance);
         
-        if (!balance) {
+        if (!balance && balance !== 0) {
             console.error('Failed to get balance');
             return;
         }

@@ -56,6 +56,7 @@ setInterval(async () => {
 
 bot.on('playerJoin', async (user, position) => {
     if (user.username === 'DyDkaPro') {
+            console.log(user.id)
             await bot.whisper.send(user.id, `\nЧестно, не думал, что зайдешь))`) .catch(e => console.error(e))
             return
     }

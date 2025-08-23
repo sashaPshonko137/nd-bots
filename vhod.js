@@ -55,9 +55,13 @@ setInterval(async () => {
 
 
 bot.on('playerJoin', async (user, position) => {
+    if (user.username === 'DyDkaPro') {
+            await bot.whisper.send(user.id, `\nЧестно, не думал, что зайдешь))`) .catch(e => console.error(e))
+            return
+    }
     console.log(user.username)
   for (m of msgs) {
-    bot.message.send(`${getRandomNumber(0,20)}\n${m}`) .catch(e => console.error(e))
+    bot.whisper.send(user.id, `${getRandomNumber(0,20)}\n${m}`) .catch(e => console.error(e))
     await delay(1000)
   }
 });

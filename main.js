@@ -36,7 +36,7 @@ async function runWorkers(filePaths) {
 const filesToRun = [
     './dj.js',
     // './bar.js', 
-    './vhod.js',
+    // './vhod.js',
     // "radio.js"
 ];
 

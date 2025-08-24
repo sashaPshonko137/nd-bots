@@ -3,7 +3,7 @@ const { Highrise, Events, Facing, Emotes, GoldBars } = require("highrise.sdk.dev
 const fs = require('fs');
 const fsPromises = require('fs').promises;
 const path = require('path');
-
+const fetch = require('node-fetch');
 const token = "6c7d50b61c03881fea2a75ebeccb3dbf362e04cfdef99cdff8a3b000b576e935";
 const room = "68a5826cc71c2f71395f5e36";
 const ownerID = "https://high.rs/room?id=68529363d23340447bc0b10c&invite_id=6878f0cda2765ebef404143f"

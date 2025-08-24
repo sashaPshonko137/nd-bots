@@ -6,7 +6,7 @@ const { exec } = require('child_process');
 const os = require('os');
 
 // Получаем __dirname в CommonJS
-const __dirname = path.resolve();
+// const __dirname = path.resolve();
 
 const AUDIO_DIR = path.join(__dirname, 'audio');
 const PORT = 8000;

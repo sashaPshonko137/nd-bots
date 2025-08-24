@@ -37,7 +37,7 @@ const filesToRun = [
     './dj.js',
     './bar.js', 
     './vhod.js',
-    "radio.js"
+    // "radio.js"
 ];
 
 runWorkers(filesToRun)

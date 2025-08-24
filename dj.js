@@ -427,7 +427,7 @@ function extractTitle(input) {
 }
 
 async function sendPostRequest(name) {
-    const url = 'http://localhost:8000/add';
+    const url = 'http://31.129.101.253:8000/add';
     const data = { track: name };
 
     try {

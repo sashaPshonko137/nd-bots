@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "highrise.sdk.dev": "^2.4.0"
+    "highrise.sdk.dev": "^2.4.0",
+    "node-fetch": "^3.3.2"
   }
 }

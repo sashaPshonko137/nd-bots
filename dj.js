@@ -412,10 +412,48 @@ bot.on('ready', async () => {
   })
 });
 
+function extractTitle(input) {
+    // Проверяем, что строка существует и начинается с "!включи "
+    if (typeof input !== 'string') return null;
+
+    const prefix = '!включи ';
+    if (input.startsWith(prefix)) {
+        const title = input.slice(prefix.length).trim();
+        // Возвращаем название, только если оно не пустое
+        return title.length > 0 ? title : null;
+    }
+
+    return null;
+}
+
+async function sendPostRequest(name) {
+    const url = 'http://localhost:8000/add';
+    const data = { track: name };
+
+    try {
+        await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        });
+
+    } catch (error) {
+        console.error('Ошибка:', error);
+    }
+}
+
 bot.on("chatCreate", async (user, message) => {
   const msg = message.toLowerCase();
     if (msg === '0') {
     userEmote.delete(user.id)
+    return
+  }
+
+  const track = extractTitle(msg)
+  if (track) {
+      await sendPostRequest(track)
     return
   }
 
